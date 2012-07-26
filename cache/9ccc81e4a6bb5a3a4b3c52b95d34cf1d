@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:g="http://code.google.com/apis/+1button/">
+	<head><title>
+	KEXP 90.3 FM - PLAYLIST FOR 7/24/2012 8:00 PM
+
+</title><meta http-equiv="X-UA-Compatible" content="IE=8" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><link type="image/x-icon" rel="shortcut icon" href="/FavIcon.ico" />
+	<!-- Build Version: 0.0.0.0 -->
+	<!-- Server Name: KEXP-WEB2 -->
+	<meta name="description" /><meta name="keywords" /><meta name="robots" content="index, follow" />
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/Common.css" /> 
+	<!-- link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_main.css" / --> 
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_main.css" /> 
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_navbar.css" />
+    <script type="text/javascript" src="/playlist/Resources/Scripts/Common.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/modernizr-1.7.min.js"></script>
+    <script type="text/javascript" src="/playlist/Resources/Scripts/jquery.textchange.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/Core.js"></script> 
+	<!--[if lt IE 7]>
+	<style media="screen" type="text/css">
+	#container {
+		height:100%;
+	}
+	</style>
+	<![endif]-->
+		
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_buylink-1.0.css" />
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/Playlist-0.1.2.css" />
+	<style type="text/css"> 
+	.debug_hidden { display: none; }
+	</style>
+	<script type="text/javascript">
+		var serverUtcOffset = -420; 
+		var refreshed = 0;
+		var debugMode = false;
+		var mTimeout = null; // social menu
+		var KEXPPlaylist = { };
+		KEXPPlaylist.maxUpdatedDate = deserializeJsonDate("\/Date(1343188556780-0700)\/");
+		KEXPPlaylist.playlistURI = 'http://kexp.org/playlist';
+		KEXPPlaylist.CurrentEtag = '';
+		KEXPPlaylist.showUpdateURI = "/playlist/showupdates";
+		KEXPPlaylist.playlistUpdateURI = "/playlist/playlistupdates";
+		KEXPPlaylist.maxPlaylistItems = 50;
+		KEXPPlaylist.PlaylistChannel = 1;
+	</script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/analytics.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/Playlist-0.1.3.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/kexp_buylink-1.0.js"></script>
+	<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		var foo_IsArchiveHasValue = "True";
+		var bar_IsArchiveValue = "True";
+		$(function() {
+
+		
+			$.each($("#PlaylistItems").children().filter('div.Play'), function (i, plItemDiv) {	postPlay(plItemDiv); });
+			$('#PlaylistButton').click(function() { 
+				 window.location.href = '/playlist/' + $('#PlaylistYear').val() + '/' + $('#PlaylistMonth').val() + '/' + $('#PlaylistDay').val() + '/' + $('#PlaylistHour').val();
+				return false;
+				});
+			emailDJiframe();
+
+			$("a.buylink-sm").click(function(){
+				_gaq.push(['_trackEvent', 'Playlist Buylink', $(this).attr('href')]) ;
+				return true;
+			});
+
+			 if(debugMode){
+				$('#runRefresh, form#f, #debug_pane, .debug_hidden').show();
+				$('form#f #c').attr('checked', true);
+				$("#b").click(function() {
+				setPageTitle();
+				})
+			}
+			$("form#f #c").click(function() {
+				debugMode = $("form#f #c").is(':checked');
+				$('#runRefresh, form#f, #debug_pane, .debug_hidden').show();
+				});
+			// end debug
+
+			$('a[data-favorite="true"]').click(function () {
+				unlikePlay($(this));
+				return false;
+			});
+			$('a[data-favorite="false"]').click(function () {
+				likePlay($(this));
+				return false;
+			});
+			
+		}); // end onload functions
+
+    
+	var dM = function (msg){
+		$("<div>" + msg + "</div>").hide().appendTo("#debug_pane").fadeIn("slow");
+	}
+
+	var openMiniPlaylist = function (mPurl){
+		var mP = window.open(mPurl,"KEXPminiplaylist","toolbar=0,scrollbars=1,location=1,status=0,menubar=1,resizable=1,width=732,height=480");
+	}		
+
+// Facebook Like code
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '301835236539969', // App ID
+      channelURL : '//kexp.org/playlist/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+
+// Google Plus Button code
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</head>
+	<body>
+
+<div id="container">
+	<div id="header">
+		<!-- Header start -->
+		<div class="header_box">
+			<h1 title="KEXP 90.3 FM - where the music matters">KEXP 90.3 FM - where the music matters</h1>
+			<a href="/support/pledgenow.asp"><img src="/playlist/Resources/Images/pledge-now-angle.gif" alt="donate now!" id="header_pledge" /></a>
+			<div id="flashplayer">
+				<div id="flash-logodiv"><div id="KexpLogo"><a href="/"><img 
+				 src="http://kexp.org/content/images/structure/kexp-logo.gif" alt="KEXP 90.3 FM" id="header_logo" /></a></div>
+				</div>
+				<div id="KexpPlayer">
+					<table class="classicnav" style="background-color: #e4e4e4; width: 100%;">
+						<tbody><tr><td align="right"><b>WindowsMedia:</b></td><td><a href="http://kexp.org/audio/kexp.wmx" 
+							onclick="javascript:urchinTracker('/audio/kexp_wmx');">Play</a></td></tr>
+						<tr><td align="right"><b>Real:</b></td><td><a href="http://kexp.org/audio/live.ram" 
+							onclick="javascript:urchinTracker('/audio/live_ram');">Play</a></td></tr>
+						<tr><td align="right"><b>MP3:</b></td><td><a href="http://kexp-mp3-1.cac.washington.edu:8000/listen.pls" 
+							onclick="javascript:urchinTracker('/audio/mp3_32k');">32k</a>&nbsp;<a href="http://kexp-mp3-128k.cac.washington.edu:8000/listen.pls" 
+							onclick="javascript:urchinTracker('/audio/mp3_128k');">128k</a></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<img src="/playlist/Resources/Images/sponsoredby-sm.gif" alt="Sponsored By" id="sponsoredtop" />            
+			<div id="home_top_903">
+				<!--/* OpenX iFrame Tag v2.8.2 */-->	                
+				<iframe id='paste_adframe' name='a61545e8' src='http://i.hear-there.com/www/delivery/afr.php?zoneid=22&amp;cb=218907' framespacing='0' frameborder='no' scrolling='no' width='728' height='90' allowtransparency='true'><a href='http://i.hear-there.com/www/delivery/ck.php?n=a830711b&amp;cb=218907' target='_blank'><img src='http://i.hear-there.com/www/delivery/avw.php?zoneid=22&amp;cb=218907&amp;n=a830711b' border='0' alt='' /></a></iframe>
+				<div class="navbarlist" id="kexp_navbar">
+					<script type="text/javascript" src="/includes/csinc_win.js"></script>
+<script type="text/javascript">
+	var openMiniPlaylist = function (mPurl){
+		var mP = window.open(mPurl,"KEXPminiplaylist","toolbar=0,scrollbars=1,location=1,status=0,menubar=1,resizable=1,width=732,height=480");
+	}	
+</script>
+
+<ul id="knavUL">
+<li onmouseover="this.className='msieFix'" onfocus="this.className='msieFix'" 
+	onmouseout="this.className=''" onblur="this.className=''"><a href="/playlist">Playlist</a>
+		<ul><li><a href="/playlist">Playlist</a></li>
+		<li><a href="javascript:openMiniPlaylist('/playlist/miniplaylist');">Mini-Playlist</a></li>
+		<li><a href="/about/email.asp?email=dj">DJ Request</a></li>
+		<li><a href="/about/mobile.asp">Mobile</a></li>
+		<li class="lilast"><a href="/reviews/default.aspx">Album Reviews</a></li></ul></li>
+		
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''" 
+	onfocus="this.className='msieFix'" onblur="this.className=''"><a href="/programming/programming.asp">Shows</a>
+	<ul><li><a href="/programming/programming.asp">Shows</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=9">Audioasis</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=48">El Sonido</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=11">Expansions</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=15">Jazz Theatre</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=7">Mind Over Matters</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=8">Positive Vibrations</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=13">Preachin' The Blues</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=4">The Roadhouse</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=47">Seek &amp; Destroy</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=6">Shake The Shack</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=12">Sonarchy Radio</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=46">Sonic Reducer</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=14">Street Sounds</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=5">Swingin' Doors</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=1">Variety Mix</a></li>
+	<li class="lilast"><a href="/aspnet_client/get_show_archive.aspx?showID=3">Wo' Pop</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/programming/djpage.asp?DJID=0">DJs</a>
+    <ul><li><a href="/programming/djpage.asp?DJID=0">DJs</a></li>
+    <li><a href="/programming/djmail.asp">DJ Mailing List</a></li>
+	<li class="lilast"><a href="/about/email.asp?email=dj">DJ Request</a></li></ul></li>
+	
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/ondemand.asp">On Demand</a>
+	<ul><li><a href="/ondemand.asp">On Demand</a></li>
+	    <li><a href="/live/default.aspx">Live In-Studio Performances</a></li>
+		<li><a href="/podcasting/podcasting.asp">Podcasting</a></li>
+		<li><a href="/streamarchive/streamarchive.asp">Streaming Show Archive</a></li>
+		<li><a href="/learn/documentaries.aspx">Documentaries</a></li>
+		<li><a href="/learn/lessonplans.aspx">Lesson Plans</a></li>
+		<li class="lilast"><a href="/about/connectionFAQ.asp">Streaming Help</a></li></ul></li>
+		
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/programming/chart.aspx">Charts</a>
+	<ul><li><a href="/charts/Variety/">Variety</a></li>
+	<li><a href="/charts/Americana/">Americana</a></li>
+	<li><a href="/charts/Electronic/">Electronic</a></li>
+	<li><a href="/charts/Jazz/">Jazz</a></li>
+	<li><a href="/charts/Northwest/">Northwest</a></li>
+	<li><a href="/charts/Adds/">Adds</a></li>
+	<li><a href="/charts/World/">World</a></li>
+	<li><a href="/charts/Hiphop/">Hiphop</a></li>
+	<li><a href="/charts/Blues/">Blues</a></li>
+	<li class="lilast"><a href="/charts/top90/">Top 90.3</a></li></ul></li>
+	
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/events/">Events</a>
+		<ul><li><a href="/events/">Recommended Events</a></li>
+		<li><a href="/programming/instudio.asp">Upcoming In-studios</a></li>
+		<li><a href="/events/clublist.asp">Venues</a></li>
+		<li><a href="/events/special.asp">Special Events</a></li>
+		<li><a href="/events/past.asp">Past Events</a></li>
+		<li><a href="/events/photos.asp">Photo Galleries</a></li>
+		<li><a href="/events/giveaways.asp">Giveaways</a></li>
+		<li class="lilast"><a href="/events/clubcalendar.asp">Club Calendar</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/donate/">Donate</a>
+	<ul><li><a href="/donate/">Donate Now</a></li>
+<li><a href="/support/benefitsofgiving.asp">Benefits of Giving</a></li>
+<li><a href="/support/donorclubs.asp">VIP Giving Clubs</a></li>
+<li><a href="/support/donorbenefits.asp">Donor Benefit Card Discounts</a></li>
+<li><a href="/support/waystogive.asp">Ways to Give</a></li>
+<li><a href="/support/foundationandgovernment.asp">Foundation and Government Support</a></li>
+<li><a href="/support/aboutDonorServicesFAQ.asp">FAQs</a></li>
+<li class="lilast"><a href="/support/contactDonorServices.asp">Contact Us</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="http://blog.kexp.org/blog">blog</a>
+    <ul><li><a href="http://blog.kexp.org/blog">blog</a></li>
+	<li><a href="http://blog.kexp.org/category/photo-galleries/">Photos</a></li>
+	<li><a href="http://blog.kexp.org/category/song-of-the-day-podcast/">Song of the Day</a></li>
+	<li><a href="http://blog.kexp.org/category/live-reviews/">Live Show Reviews</a></li>
+	<li><a href="http://blog.kexp.org/category/live-video/">Live Videos</a></li>
+	<li><a href="http://blog.kexp.org/category/music-news/">Music News Headlines</a></li>
+	<li class="lilast"><a href="http://blog.kexp.org/category/out-this-week/">New Releases</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''" style="border-right: none;"><a href="/about/about.asp">about</a>
+	<ul><li><a href="/about/about.asp">About</a></li>
+<li><a href="/about/history.asp">History</a></li>
+<li><a href="/newyork/default.aspx">Radio New York</a></li>
+<li><a href="/about/annualreports.asp">Annual Reports & Message from the Executive</a></li>
+<li><a href="/about/partnership.asp">Community Partnerships</a></li>
+<li><a href="/about/adboard.asp">Volunteer Leadership</a></li>
+<li><a href="/about/people.asp">Staff</a></li>
+<li><a href="http://www.shiftboard.com/kexp/" target="_new">Volunteering</a></li>
+<li><a href="/support/internships.aspx">Internships</a></li>
+<li><a href="/support/bizsupport.asp">Support KEXP through your Business</a></li>
+<li><a href="/programming/airplay.asp">Getting Airplay</a></li>
+<li><a href="/about/jobs.asp">Jobs</a></li>
+<li><a href="/about/help.asp">Help</a></li>
+<li><a href="/about/faq.asp">FAQ</a></li>
+<li class="lilast"><a href="/about/contact.asp">Contact Us</a></li></ul></li>
+</ul>
+
+					<form action="/search/search.aspx" method="GET" class="searchform">
+						<span class="searchspan"><label for="q" class="noDisplay">Search:</label>
+							<input type="text" tabindex="1" onblur="if(this.value==''){this.value='Search KEXP!';this.style.color='#b3b3b3';}" onfocus="if(this.value=='Search KEXP!'){this.value='';this.style.color='#b3b3b3';}else{this.select();this.style.color='#b3b3b3';}" maxlength="256" size="28" name="q" class="searchfield" value="Search KEXP!" />           
+							<input type="image" tabindex="2" style="color:#b3b3b3;" onkeypress="javascript:document.getElementById('gs').submit();" onclick="javascript:document.getElementById('gs').submit();" value="Search" src="/content/images/submit_btn.gif" class="searchbtn" alt="Search" />
+						</span>
+						<input type="hidden" value="005196529597108582349:fuytrvag5y8" name="cx" />
+						<input type="hidden" value="google-csbe" name="client" />
+						<input type="hidden" value="xml_no_dtd" name="output" />
+						<input type="hidden" value="us" name="gl" />
+						<input type="hidden" value="20" name="num" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div><!-- Header end -->
+
+
+	<div id="body">
+
+	<!-- Body start -->
+	<div id="left_column">
+        <!-- Html.RenderPartial("LogOnUserControl"); -->
+		
+
+ <form id="f" style="display: none;"><input type="checkbox" id="c" name="cn"> <label for="cn">debug?</label><br /></form>
+
+<div id="left_sidebar">
+	<h3 class="sidetitle TextCenter">Welcome to the New KEXP Playlist!</h3>
+	<h2 class="debug_hidden">Playlist Rendered:<br />12:20:45.507</h2>
+	<div class="TextCenter">
+	<!-- -->
+	<a href="javascript:openMiniPlaylist('/playlist/miniplaylist')" id="launchMini">Launch Mini-Playlist</a><br /><br />
+	<div class="sidebarText">As you can see, we've updated our playlist! We will soon be bringing you new features and updates, but for now you can 
+	<a href="http://blog.kexp.org/blog/new-kexp-playlist-faq/" target="_blank">read our FAQ here</a>.<br />
+	</div>
+	<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" />
+	<div class="sidebarText">
+	<strong>NEW!</strong> Test out our new <a href="/archive/">Streaming Archive Player</a>, currently in <em><strong>Beta</strong></em>. 
+	</div>
+	<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" />
+	<div class="sidebarText">
+		<a href="http://www.washington.edu" target="_new" onClick="javascript:urchinTracker('/offsite/uw')" title="University of Washington"><img src="/content/images/logos/uw-logo-30x20.gif" 
+		alt="The University of Washington Logo" border="0" style="float: left; padding: 4px 2px 0 0;" /></a>
+		KEXP is a service of the<br />
+		<a href="http://www.washington.edu" target="_new" onClick="javascript:urchinTracker('/offsite/uw')" title="University of Washington" style="font-size: 11px; font-family: Arial;">University of Washington</a>
+	</div>
+		<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" /><br />
+			Old playlist still located <a href="/playlist/old_playlist.asp">here</a>
+		<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" /><br />
+	</div>
+	<script type="text/javascript" language="javascript" src="/new/feedgiver.aspx?packageid=51"></script>
+	<div class="TextCenter"><img src="/content/images/structure/div_h_dashed_column.gif" alt="------" /><br />
+
+	<!--div id="amazon_aws">
+		<h3 class="sidetitle nobg">Help Support KEXP!</h3>
+			<script charset="utf-8" type="text/javascript" src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822/US/kexponline-20/8002/b1f6f947-c31c-4cf4-a93e-b07cf94d6343"></script>
+			<noscript><a href="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fkexponline-20%2F8002%2Fb1f6f947-c31c-4cf4-a93e-b07cf94d6343&Operation=NoScript">Amazon.com Widgets</a></noscript>
+		<br />
+		<span class="graytext">Your purchases that start here support KEXP.</span>
+	</div -->
+
+<div id="skyscraperad" style="padding: 16px 0 16px 0;">
+	<!--/* OpenX iFrame Tag v2.8.7 */-->
+	<iframe id='a5ae82f0' name='a5ae82f0' src='http://i.hear-there.com/www/delivery/afr.php?zoneid=52&amp;cb=923820' frameborder='0' scrolling='no' width='160' height='600'><a href='http://i.hear-there.com/www/delivery/ck.php?n=a5606f38&amp;cb=923820' target='_blank'><img src='http://i.hear-there.com/www/delivery/avw.php?zoneid=52&amp;cb=923820&amp;n=a5606f38' border='0' alt='' /></a></iframe>
+</div>
+
+	</div>
+</div>
+<div style="display: none; text-align: right; background-color:#fff;" id="emailframe"><a href="#" id="closeRequest">Close [X]</a><div id="emailframe_body"></div></div>
+
+	</div>
+
+
+	<div id="main_column">
+			
+<!-- Facebook Like Code -->
+	<div id="fb-root"></div>
+
+	<div id="ShowSummary">
+		
+
+		<div>
+            
+                    <div class="HostImages">
+			<img src="https://kexpstorage.blob.core.windows.net/images/hosts/111332" alt="Darek Mazzone" /> 
+                    </div>
+			
+			<div class="ShowAirDate">Tuesday, July 24, 2012 - 6 PM</div>
+			<div class="ShowName">
+			<a href="/aspnet_client/get_show_archive.aspx?showID=3">Wo' Pop</a>
+			</div>
+			<div class="ShowTagline">xox</div>
+			<div class="HostNames">
+            
+			<div class="ShowHost"><a href="/aspnet_client/get_dj_archive.aspx?djs=285">Darek Mazzone</a>
+			</div>
+			
+            </div>
+		
+			<div class="EmailDj"><strong>DJ Requests</strong> 
+				<a href="#" class="emaildj_link"><img src="/playlist/Resources/Images/email-dj.gif" alt="Email the DJ a request" /></a>
+			</div>
+		</div>
+
+		<h2 class="debug_hidden">Runtime: 12:20:45.507</h2>
+	</div>
+	<div id="PlaylistNavigation">
+		<table>
+			<tr>
+				<td>
+					<select id="PlaylistMonth" name="PlaylistMonth"><option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option selected="selected" value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+					<select id="PlaylistDay" name="PlaylistDay"><option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option selected="selected">24</option>
+<option>25</option>
+<option>26</option>
+<option>27</option>
+<option>28</option>
+<option>29</option>
+<option>30</option>
+<option>31</option>
+</select>
+					<select id="PlaylistYear" name="PlaylistYear"><option selected="selected">2012</option>
+<option>2011</option>
+<option>2010</option>
+<option>2009</option>
+<option>2008</option>
+<option>2007</option>
+<option>2006</option>
+<option>2005</option>
+<option>2004</option>
+<option>2003</option>
+<option>2002</option>
+<option>2001</option>
+</select>
+					<select id="PlaylistHour" name="PlaylistHour"><option value="12am">12 AM</option>
+<option value="1am">1 AM</option>
+<option value="2am">2 AM</option>
+<option value="3am">3 AM</option>
+<option value="4am">4 AM</option>
+<option value="5am">5 AM</option>
+<option value="6am">6 AM</option>
+<option value="7am">7 AM</option>
+<option value="8am">8 AM</option>
+<option value="9am">9 AM</option>
+<option value="10am">10 AM</option>
+<option value="11am">11 AM</option>
+<option value="12pm">12 PM</option>
+<option value="1pm">1 PM</option>
+<option value="2pm">2 PM</option>
+<option value="3pm">3 PM</option>
+<option value="4pm">4 PM</option>
+<option value="5pm">5 PM</option>
+<option value="6pm">6 PM</option>
+<option value="7pm">7 PM</option>
+<option selected="selected" value="8pm">8 PM</option>
+<option value="9pm">9 PM</option>
+<option value="10pm">10 PM</option>
+<option value="11pm">11 PM</option>
+</select>
+				
+				</td>
+				<td>
+					<input type="button" id="PlaylistButton" name="PlaylistButton" value=" Go " />
+					<input type="hidden" id="PlaylistDate" name="PlaylistDate" value="null" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="HourNavigation">
+						<div><a href="/playlist/2012/7/24/7pm" id="PreviousHourButton">&lt; Previous</a></div>
+						
+						<div class="LiveHour"><a id="LiveHourButton" href="/playlist/">Go To Now</a></div>
+						
+						<div class="NextHour"><a href="/playlist/2012/7/24/9pm" id="NextHourButton">Next &gt;</a></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br clear="all" />
+
+	<div id="Playlist">
+			<div id="PlaylistItems">
+				
+
+<div id="Play20120725035451000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576724","PlayType":1,"AirDate":"\/Date(1343188491000)\/","UpdatedDate":"\/Date(1343188556780)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Selda, Egon, etc","ReleaseName":"Oyun Havasi! Vol 1","TrackName":"Middle eastern delightys selected by Mahssa","LabelName":"B-Music","ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583350","Text":"Fourth installment of dublab&apos;s \"Future Roots\" mix CD series. Up next is Larry Rose with Larry&apos;s Lounge.","IsDeleted":false,"CreatedDate":"\/Date(1343188656137)\/","UpdatedDate":"\/Date(1343188656137)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/5451"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Fourth installment of dublab&#39;s &quot;Future Roots&quot; mix CD series. Up next is Larry Rose with Larry&#39;s Lounge.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Selda, Egon, etc" 
+						title="Search KEXP for Selda, Egon, etc">Selda, Egon, etc</a></div>
+					<div class="TrackName">Middle eastern delightys selected by Mahssa</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Oyun Havasi! Vol 1</div>
+						<div class="ReleaseAndLabel">Released by <span class="LabelName">B-Music</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:54 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725035451000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/5451" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725035451000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/5451" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725035451000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/5451"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725035450000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576723","PlayType":4,"AirDate":"\/Date(1343188490000)\/","UpdatedDate":"\/Date(1343188491710)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">8:54 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120725035134000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576722","PlayType":1,"AirDate":"\/Date(1343188294000)\/","UpdatedDate":"\/Date(1343188394070)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":"Gal Costa","ReleaseName":"Brazil 70: After Tropicalia: New Directions in Brazilian Music in the 1970s","TrackName":"Pontos de Luz","LabelName":"Soul Jazz Records","ReleaseEventDate":{"Year":2007,"Month":9,"Day":3},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583349","Text":"Born in Salvador in 1945, Gal Costa is a Brazilian singer of popular music.","IsDeleted":false,"CreatedDate":"\/Date(1343188394397)\/","UpdatedDate":"\/Date(1343188400810)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/5134"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Born in Salvador in 1945, Gal Costa is a Brazilian singer of popular music.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Gal Costa" 
+						title="Search KEXP for Gal Costa">Gal Costa</a></div>
+					<div class="TrackName">Pontos de Luz</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Brazil 70: After Tropicalia: New Directions in Brazilian Music in the 1970s</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2007</span> by <span class="LabelName">Soul Jazz Records</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:51 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725035134000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/5134" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725035134000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/5134" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725035134000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/5134"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725034708000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576721","PlayType":1,"AirDate":"\/Date(1343188028000)\/","UpdatedDate":"\/Date(1343188057030)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Quantic Presenta Flowering Inferno","ReleaseName":"Dog With a Rope","TrackName":"Dub Y Guaguanco","LabelName":"Tru Thoughts","ReleaseEventDate":{"Year":2010,"Month":7,"Day":19},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/61LizGyJ2QL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583348","Text":"Quantic aka William Holland is a musician, DJ and record producer from Bewdley, Worcestershire, UK now living in Colombia. ","IsDeleted":false,"CreatedDate":"\/Date(1343188220830)\/","UpdatedDate":"\/Date(1343188220830)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/61LizGyJ2QL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/4708"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/61LizGyJ2QL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Quantic aka William Holland is a musician, DJ and record producer from Bewdley, Worcestershire, UK now living in Colombia. 
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Quantic Presenta Flowering Inferno" 
+						title="Search KEXP for Quantic Presenta Flowering Inferno">Quantic Presenta Flowering Inferno</a></div>
+					<div class="TrackName">Dub Y Guaguanco</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Dog With a Rope</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2010</span> by <span class="LabelName">Tru Thoughts</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:47 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725034708000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/4708" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725034708000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/4708" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725034708000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/4708"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725034400000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576720","PlayType":4,"AirDate":"\/Date(1343187840000)\/","UpdatedDate":"\/Date(1343187841747)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">8:44 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120725033803000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576718","PlayType":1,"AirDate":"\/Date(1343187483000)\/","UpdatedDate":"\/Date(1343187579870)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Temple of Sound vs. DJ Cheb I Sabbah","ReleaseName":"Traveler 06: A Six Degrees Collection","TrackName":"Esh &apos;Dani, Alash Mshit (Summer in Algiers remix)","LabelName":"Six Degrees","ReleaseEventDate":{"Year":2006,"Month":null,"Day":null},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51zV2JKyD4L._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583347","Text":"Cheb i Sabbah, born Haim Serge El Baz in Constantine, Algeria, is a club DJ based in San Francisco, California. ","IsDeleted":false,"CreatedDate":"\/Date(1343187580417)\/","UpdatedDate":"\/Date(1343187580417)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51zV2JKyD4L.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/3803"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51zV2JKyD4L.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Cheb i Sabbah, born Haim Serge El Baz in Constantine, Algeria, is a club DJ based in San Francisco, California. 
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Temple of Sound vs. DJ Cheb I Sabbah" 
+						title="Search KEXP for Temple of Sound vs. DJ Cheb I Sabbah">Temple of Sound vs. DJ Cheb I Sabbah</a></div>
+					<div class="TrackName">Esh &#39;Dani, Alash Mshit (Summer in Algiers remix)</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Traveler 06: A Six Degrees Collection</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2006</span> by <span class="LabelName">Six Degrees</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:38 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725033803000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/3803" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725033803000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/3803" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725033803000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/3803"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725033402000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576717","PlayType":1,"AirDate":"\/Date(1343187242000)\/","UpdatedDate":"\/Date(1343187386723)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Marcos Valle","ReleaseName":"Chill: Brazil 2002","TrackName":"Guanabara","LabelName":null,"ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583346","Text":"Marcos Kostenbader Valle is a Brazilian singer, songwriter and record producer. He has produced works in many musical styles, including bossa nova, samba, and fusions of rock, soul, jazz, and dance music with Brazilian styles.","IsDeleted":false,"CreatedDate":"\/Date(1343187540947)\/","UpdatedDate":"\/Date(1343187540947)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/3402"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Marcos Kostenbader Valle is a Brazilian singer, songwriter and record producer. He has produced works in many musical styles, including bossa nova, samba, and fusions of rock, soul, jazz, and dance music with Brazilian styles.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Marcos Valle" 
+						title="Search KEXP for Marcos Valle">Marcos Valle</a></div>
+					<div class="TrackName">Guanabara</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Chill: Brazil 2002</div>
+						
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:34 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725033402000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/3402" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725033402000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/3402" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725033402000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/3402"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725032800000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576716","PlayType":1,"AirDate":"\/Date(1343186880000)\/","UpdatedDate":"\/Date(1343186909690)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Shankar Jaikishan","ReleaseName":"Bombay Connection, Volume 2: Bombshell Baby of Bombay","TrackName":"Jan Pahechan Ho","LabelName":null,"ReleaseEventDate":{"Year":2006,"Month":null,"Day":null},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51PViiiRZIL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583345","Text":"Shankar Jaikishan, also known as S\/J, is an Indian music composer duo in the Hindi film industry, working together from 1949â€“1971.","IsDeleted":false,"CreatedDate":"\/Date(1343187177760)\/","UpdatedDate":"\/Date(1343187177760)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51PViiiRZIL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/2800"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51PViiiRZIL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Shankar Jaikishan, also known as S/J, is an Indian music composer duo in the Hindi film industry, working together from 1949–1971.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Shankar Jaikishan" 
+						title="Search KEXP for Shankar Jaikishan">Shankar Jaikishan</a></div>
+					<div class="TrackName">Jan Pahechan Ho</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Bombay Connection, Volume 2: Bombshell Baby of Bombay</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2006</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:28 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725032800000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/2800" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725032800000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/2800" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725032800000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/2800"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725032400000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576715","PlayType":1,"AirDate":"\/Date(1343186640000)\/","UpdatedDate":"\/Date(1343186679807)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"S.D. Burman","ReleaseName":"The Best of Bollywood","TrackName":"Hey Maine","LabelName":"Hip-O Records","ReleaseEventDate":{"Year":2003,"Month":5,"Day":6},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51KHR8vcdxL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583344","Text":"S. D. Burman was one of the most famous music composers for Hindi movies and a Bengali singer and composer. His son Rahul Dev Burman also achieved great success as a Bollywood music director in his own right. S. D. Burman composed music for 100 movies, including Bengali films.","IsDeleted":false,"CreatedDate":"\/Date(1343186747247)\/","UpdatedDate":"\/Date(1343186747247)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51KHR8vcdxL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/2400"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51KHR8vcdxL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					S. D. Burman was one of the most famous music composers for Hindi movies and a Bengali singer and composer. His son Rahul Dev Burman also achieved great success as a Bollywood music director in his own right. S. D. Burman composed music for 100 movies, including Bengali films.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=S.D. Burman" 
+						title="Search KEXP for S.D. Burman">S.D. Burman</a></div>
+					<div class="TrackName">Hey Maine</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">The Best of Bollywood</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2003</span> by <span class="LabelName">Hip-O Records</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:24 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725032400000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/2400" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725032400000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/2400" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725032400000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/2400"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725031941000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576714","PlayType":1,"AirDate":"\/Date(1343186381000)\/","UpdatedDate":"\/Date(1343186394980)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Arnaldo Antunes, Edgard Scandurra & Tourmani Diabate","ReleaseName":"A Curva Da Cintura","TrackName":"Kaira","LabelName":"Mais Um Discos","ReleaseEventDate":{"Year":2012,"Month":6,"Day":11},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583343","Text":"The cross-continent collaboration between Malian Kora legend Toumani DiabatÃ© and two Brazilian musicians, Arnaldo Antunes and Edgard Scandurra.","IsDeleted":false,"CreatedDate":"\/Date(1343186496833)\/","UpdatedDate":"\/Date(1343186496833)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/1941"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					The cross-continent collaboration between Malian Kora legend Toumani Diabat&#233; and two Brazilian musicians, Arnaldo Antunes and Edgard Scandurra.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Arnaldo Antunes, Edgard Scandurra &amp; Tourmani Diabate" 
+						title="Search KEXP for Arnaldo Antunes, Edgard Scandurra &amp; Tourmani Diabate">Arnaldo Antunes, Edgard Scandurra &amp; Tourmani Diabate</a></div>
+					<div class="TrackName">Kaira</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">A Curva Da Cintura</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2012</span> by <span class="LabelName">Mais Um Discos</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:19 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725031941000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/1941" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725031941000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/1941" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725031941000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/1941"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725031805000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576713","PlayType":4,"AirDate":"\/Date(1343186285000)\/","UpdatedDate":"\/Date(1343186241053)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">8:18 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120725031427000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576712","PlayType":1,"AirDate":"\/Date(1343186067000)\/","UpdatedDate":"\/Date(1343186093273)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Chic Chocolate","ReleaseName":"Bollywood Funk Experience","TrackName":"Contessa (Akhri Khat, 1966)","LabelName":"Nascente","ReleaseEventDate":{"Year":2010,"Month":1,"Day":25},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51afkrU8tcL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583342","Text":"2010 release compiled by Jonny Trunk of Trunk Records, a soundtrack reissue label and Joel Martin half of respected Balearic-Disco outfit Quiet Village. ","IsDeleted":false,"CreatedDate":"\/Date(1343186194860)\/","UpdatedDate":"\/Date(1343186223567)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51afkrU8tcL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/1427"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51afkrU8tcL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					2010 release compiled by Jonny Trunk of Trunk Records, a soundtrack reissue label and Joel Martin half of respected Balearic-Disco outfit Quiet Village. 
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Chic Chocolate" 
+						title="Search KEXP for Chic Chocolate">Chic Chocolate</a></div>
+					<div class="TrackName">Contessa (Akhri Khat, 1966)</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Bollywood Funk Experience</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2010</span> by <span class="LabelName">Nascente</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:14 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725031427000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/1427" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725031427000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/1427" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725031427000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/1427"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725031138000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576710","PlayType":1,"AirDate":"\/Date(1343185898000)\/","UpdatedDate":"\/Date(1343185930253)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Sapan-Jagmohan","ReleaseName":"Bombay Connection, Volume 1: The Bombay Connection","TrackName":"Giraffe Trapping Music","LabelName":null,"ReleaseEventDate":{"Year":2006,"Month":null,"Day":null},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51D5DoFqo9L._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583341","Text":"Sapan & Jagmohan were well-known music composers in the Hindi film industry. ","IsDeleted":false,"CreatedDate":"\/Date(1343186015443)\/","UpdatedDate":"\/Date(1343186015443)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51D5DoFqo9L.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/1138"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51D5DoFqo9L.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Sapan &amp; Jagmohan were well-known music composers in the Hindi film industry. 
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Sapan-Jagmohan" 
+						title="Search KEXP for Sapan-Jagmohan">Sapan-Jagmohan</a></div>
+					<div class="TrackName">Giraffe Trapping Music</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Bombay Connection, Volume 1: The Bombay Connection</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2006</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:11 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725031138000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/1138" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725031138000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/1138" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725031138000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/1138"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725030746000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576709","PlayType":1,"AirDate":"\/Date(1343185666000)\/","UpdatedDate":"\/Date(1343185722880)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Wu Man and Master Musicians from the Silk Route","ReleaseName":"Borderlands: Music of Central Asia Vol. 10","TrackName":"Woy Bala (Hey Kid)","LabelName":"Smithsonian Folkways","ReleaseEventDate":{"Year":2012,"Month":null,"Day":null},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583340","Text":"In Borderlands, the Chinese musician highlights the culture of the Uyghur people.\u000a\u000aRead more: http:\/\/www.smithsonianmag.com\/video\/Borderlands-Wu-Man-and-Master-Musicians-from-the-Silk-Route.html#ixzz21bH4Gt6m\u000a","IsDeleted":false,"CreatedDate":"\/Date(1343185810990)\/","UpdatedDate":"\/Date(1343185810990)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/0746"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					In Borderlands, the Chinese musician highlights the culture of the Uyghur people.
+
+Read more: http://www.smithsonianmag.com/video/Borderlands-Wu-Man-and-Master-Musicians-from-the-Silk-Route.html#ixzz21bH4Gt6m
+
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Wu Man and Master Musicians from the Silk Route" 
+						title="Search KEXP for Wu Man and Master Musicians from the Silk Route">Wu Man and Master Musicians from the Silk Route</a></div>
+					<div class="TrackName">Woy Bala (Hey Kid)</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Borderlands: Music of Central Asia Vol. 10</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2012</span> by <span class="LabelName">Smithsonian Folkways</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:07 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725030746000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/0746" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725030746000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/0746" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725030746000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/0746"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725030614000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576708","PlayType":4,"AirDate":"\/Date(1343185574000)\/","UpdatedDate":"\/Date(1343185529923)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">8:06 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120725030209000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576707","PlayType":1,"AirDate":"\/Date(1343185329000)\/","UpdatedDate":"\/Date(1343185430660)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"The Archives","ReleaseName":"The Archives","TrackName":"It&apos;s A Crime","LabelName":"ESL Music","ReleaseEventDate":{"Year":2012,"Month":7,"Day":10},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/61KKf-8DdzL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583339","Text":"The Archives began when Thievery Corporationâ€™s Eric Hilton began a quest to explore the roots of reggae music. He asked keyboard ace Darryl â€œD-Traneâ€ Burke to put together a cover band that would introduce club goers to the rock steady hits and obscurities of the pre-reggae era. ","IsDeleted":false,"CreatedDate":"\/Date(1343185557783)\/","UpdatedDate":"\/Date(1343185557783)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/61KKf-8DdzL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/8PM/0209"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/61KKf-8DdzL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					The Archives began when Thievery Corporation’s Eric Hilton began a quest to explore the roots of reggae music. He asked keyboard ace Darryl “D-Trane” Burke to put together a cover band that would introduce club goers to the rock steady hits and obscurities of the pre-reggae era. 
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=The Archives" 
+						title="Search KEXP for The Archives">The Archives</a></div>
+					<div class="TrackName">It&#39;s A Crime</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">The Archives</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2012</span> by <span class="LabelName">ESL Music</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>8:02 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725030209000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/8PM/0209" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725030209000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/8PM/0209" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725030209000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/8PM/0209"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120725025618000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1576706","PlayType":1,"AirDate":"\/Date(1343184978000)\/","UpdatedDate":"\/Date(1343185004840)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Omar Souleyman","ReleaseName":"Haflat Gharbia The Western Concerts","TrackName":"Gazula\/Shift al Mani (I Saw Her)","LabelName":"Sublime Frequencies","ReleaseEventDate":{"Year":2011,"Month":8,"Day":30},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/6183ie3pQlL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/583338","Text":"Omar Souleyman is an Arab musician from Ra&apos;s al-&apos;Ayn, Syria. Playing Bumbershoot 2012 at Seattle Center.","IsDeleted":false,"CreatedDate":"\/Date(1343185173490)\/","UpdatedDate":"\/Date(1343185173490)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/10","UserKey":null,"DisplayName":"Darek Mazzone","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/6183ie3pQlL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/24/7PM/5618"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/6183ie3pQlL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Omar Souleyman is an Arab musician from Ra&#39;s al-&#39;Ayn, Syria. Playing Bumbershoot 2012 at Seattle Center.
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Omar Souleyman" 
+						title="Search KEXP for Omar Souleyman">Omar Souleyman</a></div>
+					<div class="TrackName">Gazula/Shift al Mani (I Saw Her)</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Haflat Gharbia The Western Concerts</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2011</span> by <span class="LabelName">Sublime Frequencies</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>7:56 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120725025618000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/24/7PM/5618" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120725025618000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/24/7PM/5618" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120725025618000-gp" size="small" href="http://kexp.org/playlist/2012/07/24/7PM/5618"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+			</div>
+	</div>
+	<div id="containerLower" class="lowerNav ">
+		<div id="lowerPlaylistNav" style="width: 280px;">
+			<div><a href="/playlist/2012/7/24/7pm" id="PreviousHourButton">&lt; Previous</a></div>
+			
+			<div class="LiveHour"><a id="A1" href="/playlist/">Go To Now</a></div>
+			
+			<div class="NextHour"><a href="/playlist/2012/7/24/9pm" id="NextHourButton">Next &gt;</a></div>
+		</div>
+	</div> 
+	<div id="debugFeedback"></div>
+
+
+	</div>
+		<!-- Body end -->
+
+	<div id="debug_pane" style="position: absolute; top: 15px; left: 975px; width: 450px; display: none;"></div>
+
+	<br clear="all" />		
+	</div>
+
+	<div id="footer">
+		<!-- Footer start -->
+		<span id="footer_left">
+		<a href="http://kexp.org/about/email.asp?email=dj">DJ Request</a> 
+			| <a href="http://kexp.org/about/privacy.asp">Privacy / Terms</a> 
+			| <a href="http://kexp.org/about/help.asp">Help</a> 
+			| KEXP is licensed to the 
+			<a href="http://www.washington.edu" target="_new">University of Washington</a>
+		</span>
+		<span id="footer_right">
+			Copyright 2012 KEXP All rights reserved
+		</span>
+		<!-- Footer end -->
+	</div>
+</div>
+	</body>
+</html>

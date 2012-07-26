@@ -1,0 +1,1404 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:g="http://code.google.com/apis/+1button/">
+	<head><title>
+	KEXP 90.3 FM - PLAYLIST FOR 7/14/2012 6:00 PM
+
+</title><meta http-equiv="X-UA-Compatible" content="IE=8" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><link type="image/x-icon" rel="shortcut icon" href="/FavIcon.ico" />
+	<!-- Build Version: 0.0.0.0 -->
+	<!-- Server Name: KEXP-WEB2 -->
+	<meta name="description" /><meta name="keywords" /><meta name="robots" content="index, follow" />
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/Common.css" /> 
+	<!-- link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_main.css" / --> 
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_main.css" /> 
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_navbar.css" />
+    <script type="text/javascript" src="/playlist/Resources/Scripts/Common.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/modernizr-1.7.min.js"></script>
+    <script type="text/javascript" src="/playlist/Resources/Scripts/jquery.textchange.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/Core.js"></script> 
+	<!--[if lt IE 7]>
+	<style media="screen" type="text/css">
+	#container {
+		height:100%;
+	}
+	</style>
+	<![endif]-->
+		
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/kexp_buylink-1.0.css" />
+	<link type="text/css" rel="stylesheet" href="/playlist/Resources/Styles/Playlist-0.1.2.css" />
+	<style type="text/css"> 
+	.debug_hidden { display: none; }
+	</style>
+	<script type="text/javascript">
+		var serverUtcOffset = -420; 
+		var refreshed = 0;
+		var debugMode = false;
+		var mTimeout = null; // social menu
+		var KEXPPlaylist = { };
+		KEXPPlaylist.maxUpdatedDate = deserializeJsonDate("\/Date(1342317579077-0700)\/");
+		KEXPPlaylist.playlistURI = 'http://kexp.org/playlist';
+		KEXPPlaylist.CurrentEtag = '';
+		KEXPPlaylist.showUpdateURI = "/playlist/showupdates";
+		KEXPPlaylist.playlistUpdateURI = "/playlist/playlistupdates";
+		KEXPPlaylist.maxPlaylistItems = 50;
+		KEXPPlaylist.PlaylistChannel = 1;
+	</script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/analytics.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/Playlist-0.1.3.js"></script>
+	<script type="text/javascript" src="/playlist/Resources/Scripts/kexp_buylink-1.0.js"></script>
+	<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		var foo_IsArchiveHasValue = "True";
+		var bar_IsArchiveValue = "True";
+		$(function() {
+
+		
+			$.each($("#PlaylistItems").children().filter('div.Play'), function (i, plItemDiv) {	postPlay(plItemDiv); });
+			$('#PlaylistButton').click(function() { 
+				 window.location.href = '/playlist/' + $('#PlaylistYear').val() + '/' + $('#PlaylistMonth').val() + '/' + $('#PlaylistDay').val() + '/' + $('#PlaylistHour').val();
+				return false;
+				});
+			emailDJiframe();
+
+			$("a.buylink-sm").click(function(){
+				_gaq.push(['_trackEvent', 'Playlist Buylink', $(this).attr('href')]) ;
+				return true;
+			});
+
+			 if(debugMode){
+				$('#runRefresh, form#f, #debug_pane, .debug_hidden').show();
+				$('form#f #c').attr('checked', true);
+				$("#b").click(function() {
+				setPageTitle();
+				})
+			}
+			$("form#f #c").click(function() {
+				debugMode = $("form#f #c").is(':checked');
+				$('#runRefresh, form#f, #debug_pane, .debug_hidden').show();
+				});
+			// end debug
+
+			$('a[data-favorite="true"]').click(function () {
+				unlikePlay($(this));
+				return false;
+			});
+			$('a[data-favorite="false"]').click(function () {
+				likePlay($(this));
+				return false;
+			});
+			
+		}); // end onload functions
+
+    
+	var dM = function (msg){
+		$("<div>" + msg + "</div>").hide().appendTo("#debug_pane").fadeIn("slow");
+	}
+
+	var openMiniPlaylist = function (mPurl){
+		var mP = window.open(mPurl,"KEXPminiplaylist","toolbar=0,scrollbars=1,location=1,status=0,menubar=1,resizable=1,width=732,height=480");
+	}		
+
+// Facebook Like code
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '301835236539969', // App ID
+      channelURL : '//kexp.org/playlist/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+
+// Google Plus Button code
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</head>
+	<body>
+
+<div id="container">
+	<div id="header">
+		<!-- Header start -->
+		<div class="header_box">
+			<h1 title="KEXP 90.3 FM - where the music matters">KEXP 90.3 FM - where the music matters</h1>
+			<a href="/support/pledgenow.asp"><img src="/playlist/Resources/Images/pledge-now-angle.gif" alt="donate now!" id="header_pledge" /></a>
+			<div id="flashplayer">
+				<div id="flash-logodiv"><div id="KexpLogo"><a href="/"><img 
+				 src="http://kexp.org/content/images/structure/kexp-logo.gif" alt="KEXP 90.3 FM" id="header_logo" /></a></div>
+				</div>
+				<div id="KexpPlayer">
+					<table class="classicnav" style="background-color: #e4e4e4; width: 100%;">
+						<tbody><tr><td align="right"><b>WindowsMedia:</b></td><td><a href="http://kexp.org/audio/kexp.wmx" 
+							onclick="javascript:urchinTracker('/audio/kexp_wmx');">Play</a></td></tr>
+						<tr><td align="right"><b>Real:</b></td><td><a href="http://kexp.org/audio/live.ram" 
+							onclick="javascript:urchinTracker('/audio/live_ram');">Play</a></td></tr>
+						<tr><td align="right"><b>MP3:</b></td><td><a href="http://kexp-mp3-1.cac.washington.edu:8000/listen.pls" 
+							onclick="javascript:urchinTracker('/audio/mp3_32k');">32k</a>&nbsp;<a href="http://kexp-mp3-128k.cac.washington.edu:8000/listen.pls" 
+							onclick="javascript:urchinTracker('/audio/mp3_128k');">128k</a></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<img src="/playlist/Resources/Images/sponsoredby-sm.gif" alt="Sponsored By" id="sponsoredtop" />            
+			<div id="home_top_903">
+				<!--/* OpenX iFrame Tag v2.8.2 */-->	                
+				<iframe id='paste_adframe' name='a61545e8' src='http://i.hear-there.com/www/delivery/afr.php?zoneid=22&amp;cb=218907' framespacing='0' frameborder='no' scrolling='no' width='728' height='90' allowtransparency='true'><a href='http://i.hear-there.com/www/delivery/ck.php?n=a830711b&amp;cb=218907' target='_blank'><img src='http://i.hear-there.com/www/delivery/avw.php?zoneid=22&amp;cb=218907&amp;n=a830711b' border='0' alt='' /></a></iframe>
+				<div class="navbarlist" id="kexp_navbar">
+					<script type="text/javascript" src="/includes/csinc_win.js"></script>
+<script type="text/javascript">
+	var openMiniPlaylist = function (mPurl){
+		var mP = window.open(mPurl,"KEXPminiplaylist","toolbar=0,scrollbars=1,location=1,status=0,menubar=1,resizable=1,width=732,height=480");
+	}	
+</script>
+
+<ul id="knavUL">
+<li onmouseover="this.className='msieFix'" onfocus="this.className='msieFix'" 
+	onmouseout="this.className=''" onblur="this.className=''"><a href="/playlist">Playlist</a>
+		<ul><li><a href="/playlist">Playlist</a></li>
+		<li><a href="javascript:openMiniPlaylist('/playlist/miniplaylist');">Mini-Playlist</a></li>
+		<li><a href="/about/email.asp?email=dj">DJ Request</a></li>
+		<li><a href="/about/mobile.asp">Mobile</a></li>
+		<li class="lilast"><a href="/reviews/default.aspx">Album Reviews</a></li></ul></li>
+		
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''" 
+	onfocus="this.className='msieFix'" onblur="this.className=''"><a href="/programming/programming.asp">Shows</a>
+	<ul><li><a href="/programming/programming.asp">Shows</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=9">Audioasis</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=48">El Sonido</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=11">Expansions</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=15">Jazz Theatre</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=7">Mind Over Matters</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=8">Positive Vibrations</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=13">Preachin' The Blues</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=4">The Roadhouse</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=47">Seek &amp; Destroy</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=6">Shake The Shack</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=12">Sonarchy Radio</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=46">Sonic Reducer</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=14">Street Sounds</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=5">Swingin' Doors</a></li>
+	<li><a href="/aspnet_client/get_show_archive.aspx?showID=1">Variety Mix</a></li>
+	<li class="lilast"><a href="/aspnet_client/get_show_archive.aspx?showID=3">Wo' Pop</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/programming/djpage.asp?DJID=0">DJs</a>
+    <ul><li><a href="/programming/djpage.asp?DJID=0">DJs</a></li>
+    <li><a href="/programming/djmail.asp">DJ Mailing List</a></li>
+	<li class="lilast"><a href="/about/email.asp?email=dj">DJ Request</a></li></ul></li>
+	
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/ondemand.asp">On Demand</a>
+	<ul><li><a href="/ondemand.asp">On Demand</a></li>
+	    <li><a href="/live/default.aspx">Live In-Studio Performances</a></li>
+		<li><a href="/podcasting/podcasting.asp">Podcasting</a></li>
+		<li><a href="/streamarchive/streamarchive.asp">Streaming Show Archive</a></li>
+		<li><a href="/learn/documentaries.aspx">Documentaries</a></li>
+		<li><a href="/learn/lessonplans.aspx">Lesson Plans</a></li>
+		<li class="lilast"><a href="/about/connectionFAQ.asp">Streaming Help</a></li></ul></li>
+		
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/programming/chart.aspx">Charts</a>
+	<ul><li><a href="/charts/Variety/">Variety</a></li>
+	<li><a href="/charts/Americana/">Americana</a></li>
+	<li><a href="/charts/Electronic/">Electronic</a></li>
+	<li><a href="/charts/Jazz/">Jazz</a></li>
+	<li><a href="/charts/Northwest/">Northwest</a></li>
+	<li><a href="/charts/Adds/">Adds</a></li>
+	<li><a href="/charts/World/">World</a></li>
+	<li><a href="/charts/Hiphop/">Hiphop</a></li>
+	<li><a href="/charts/Blues/">Blues</a></li>
+	<li class="lilast"><a href="/charts/top90/">Top 90.3</a></li></ul></li>
+	
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/events/">Events</a>
+		<ul><li><a href="/events/">Recommended Events</a></li>
+		<li><a href="/programming/instudio.asp">Upcoming In-studios</a></li>
+		<li><a href="/events/clublist.asp">Venues</a></li>
+		<li><a href="/events/special.asp">Special Events</a></li>
+		<li><a href="/events/past.asp">Past Events</a></li>
+		<li><a href="/events/photos.asp">Photo Galleries</a></li>
+		<li><a href="/events/giveaways.asp">Giveaways</a></li>
+		<li class="lilast"><a href="/events/clubcalendar.asp">Club Calendar</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="/donate/">Donate</a>
+	<ul><li><a href="/donate/">Donate Now</a></li>
+<li><a href="/support/benefitsofgiving.asp">Benefits of Giving</a></li>
+<li><a href="/support/donorclubs.asp">VIP Giving Clubs</a></li>
+<li><a href="/support/donorbenefits.asp">Donor Benefit Card Discounts</a></li>
+<li><a href="/support/waystogive.asp">Ways to Give</a></li>
+<li><a href="/support/foundationandgovernment.asp">Foundation and Government Support</a></li>
+<li><a href="/support/aboutDonorServicesFAQ.asp">FAQs</a></li>
+<li class="lilast"><a href="/support/contactDonorServices.asp">Contact Us</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''"><a href="http://blog.kexp.org/blog">blog</a>
+    <ul><li><a href="http://blog.kexp.org/blog">blog</a></li>
+	<li><a href="http://blog.kexp.org/category/photo-galleries/">Photos</a></li>
+	<li><a href="http://blog.kexp.org/category/song-of-the-day-podcast/">Song of the Day</a></li>
+	<li><a href="http://blog.kexp.org/category/live-reviews/">Live Show Reviews</a></li>
+	<li><a href="http://blog.kexp.org/category/live-video/">Live Videos</a></li>
+	<li><a href="http://blog.kexp.org/category/music-news/">Music News Headlines</a></li>
+	<li class="lilast"><a href="http://blog.kexp.org/category/out-this-week/">New Releases</a></li></ul></li>
+
+<li onmouseover="this.className='msieFix'" onmouseout="this.className=''" style="border-right: none;"><a href="/about/about.asp">about</a>
+	<ul><li><a href="/about/about.asp">About</a></li>
+<li><a href="/about/history.asp">History</a></li>
+<li><a href="/newyork/default.aspx">Radio New York</a></li>
+<li><a href="/about/annualreports.asp">Annual Reports & Message from the Executive</a></li>
+<li><a href="/about/partnership.asp">Community Partnerships</a></li>
+<li><a href="/about/adboard.asp">Volunteer Leadership</a></li>
+<li><a href="/about/people.asp">Staff</a></li>
+<li><a href="http://www.shiftboard.com/kexp/" target="_new">Volunteering</a></li>
+<li><a href="/support/internships.aspx">Internships</a></li>
+<li><a href="/support/bizsupport.asp">Support KEXP through your Business</a></li>
+<li><a href="/programming/airplay.asp">Getting Airplay</a></li>
+<li><a href="/about/jobs.asp">Jobs</a></li>
+<li><a href="/about/help.asp">Help</a></li>
+<li><a href="/about/faq.asp">FAQ</a></li>
+<li class="lilast"><a href="/about/contact.asp">Contact Us</a></li></ul></li>
+</ul>
+
+					<form action="/search/search.aspx" method="GET" class="searchform">
+						<span class="searchspan"><label for="q" class="noDisplay">Search:</label>
+							<input type="text" tabindex="1" onblur="if(this.value==''){this.value='Search KEXP!';this.style.color='#b3b3b3';}" onfocus="if(this.value=='Search KEXP!'){this.value='';this.style.color='#b3b3b3';}else{this.select();this.style.color='#b3b3b3';}" maxlength="256" size="28" name="q" class="searchfield" value="Search KEXP!" />           
+							<input type="image" tabindex="2" style="color:#b3b3b3;" onkeypress="javascript:document.getElementById('gs').submit();" onclick="javascript:document.getElementById('gs').submit();" value="Search" src="/content/images/submit_btn.gif" class="searchbtn" alt="Search" />
+						</span>
+						<input type="hidden" value="005196529597108582349:fuytrvag5y8" name="cx" />
+						<input type="hidden" value="google-csbe" name="client" />
+						<input type="hidden" value="xml_no_dtd" name="output" />
+						<input type="hidden" value="us" name="gl" />
+						<input type="hidden" value="20" name="num" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div><!-- Header end -->
+
+
+	<div id="body">
+
+	<!-- Body start -->
+	<div id="left_column">
+        <!-- Html.RenderPartial("LogOnUserControl"); -->
+		
+
+ <form id="f" style="display: none;"><input type="checkbox" id="c" name="cn"> <label for="cn">debug?</label><br /></form>
+
+<div id="left_sidebar">
+	<h3 class="sidetitle TextCenter">Welcome to the New KEXP Playlist!</h3>
+	<h2 class="debug_hidden">Playlist Rendered:<br />12:18:06.690</h2>
+	<div class="TextCenter">
+	<!-- -->
+	<a href="javascript:openMiniPlaylist('/playlist/miniplaylist')" id="launchMini">Launch Mini-Playlist</a><br /><br />
+	<div class="sidebarText">As you can see, we've updated our playlist! We will soon be bringing you new features and updates, but for now you can 
+	<a href="http://blog.kexp.org/blog/new-kexp-playlist-faq/" target="_blank">read our FAQ here</a>.<br />
+	</div>
+	<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" />
+	<div class="sidebarText">
+	<strong>NEW!</strong> Test out our new <a href="/archive/">Streaming Archive Player</a>, currently in <em><strong>Beta</strong></em>. 
+	</div>
+	<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" />
+	<div class="sidebarText">
+		<a href="http://www.washington.edu" target="_new" onClick="javascript:urchinTracker('/offsite/uw')" title="University of Washington"><img src="/content/images/logos/uw-logo-30x20.gif" 
+		alt="The University of Washington Logo" border="0" style="float: left; padding: 4px 2px 0 0;" /></a>
+		KEXP is a service of the<br />
+		<a href="http://www.washington.edu" target="_new" onClick="javascript:urchinTracker('/offsite/uw')" title="University of Washington" style="font-size: 11px; font-family: Arial;">University of Washington</a>
+	</div>
+		<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" /><br />
+			Old playlist still located <a href="/playlist/old_playlist.asp">here</a>
+		<img src="/content/images/structure/div_h_dashed_column.gif" alt="------" /><br />
+	</div>
+	<script type="text/javascript" language="javascript" src="/new/feedgiver.aspx?packageid=51"></script>
+	<div class="TextCenter"><img src="/content/images/structure/div_h_dashed_column.gif" alt="------" /><br />
+
+	<!--div id="amazon_aws">
+		<h3 class="sidetitle nobg">Help Support KEXP!</h3>
+			<script charset="utf-8" type="text/javascript" src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822/US/kexponline-20/8002/b1f6f947-c31c-4cf4-a93e-b07cf94d6343"></script>
+			<noscript><a href="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fkexponline-20%2F8002%2Fb1f6f947-c31c-4cf4-a93e-b07cf94d6343&Operation=NoScript">Amazon.com Widgets</a></noscript>
+		<br />
+		<span class="graytext">Your purchases that start here support KEXP.</span>
+	</div -->
+
+<div id="skyscraperad" style="padding: 16px 0 16px 0;">
+	<!--/* OpenX iFrame Tag v2.8.7 */-->
+	<iframe id='a5ae82f0' name='a5ae82f0' src='http://i.hear-there.com/www/delivery/afr.php?zoneid=52&amp;cb=923820' frameborder='0' scrolling='no' width='160' height='600'><a href='http://i.hear-there.com/www/delivery/ck.php?n=a5606f38&amp;cb=923820' target='_blank'><img src='http://i.hear-there.com/www/delivery/avw.php?zoneid=52&amp;cb=923820&amp;n=a5606f38' border='0' alt='' /></a></iframe>
+</div>
+
+	</div>
+</div>
+<div style="display: none; text-align: right; background-color:#fff;" id="emailframe"><a href="#" id="closeRequest">Close [X]</a><div id="emailframe_body"></div></div>
+
+	</div>
+
+
+	<div id="main_column">
+			
+<!-- Facebook Like Code -->
+	<div id="fb-root"></div>
+
+	<div id="ShowSummary">
+		
+
+		<div>
+            
+                    <div class="HostImages">
+			<img src="https://kexpstorage.blob.core.windows.net/images/hosts/111371" alt="DJ Sharlese" /> 
+                    </div>
+			
+			<div class="ShowAirDate">Saturday, July 14, 2012 - 6 PM</div>
+			<div class="ShowName">
+			<a href="/aspnet_client/get_show_archive.aspx?showID=9">Audioasis</a>
+			</div>
+			<div class="ShowTagline">Audioasis -Saturdaze 6-9pm</div>
+			<div class="HostNames">
+            
+			<div class="ShowHost"><a href="/aspnet_client/get_dj_archive.aspx?djs=325">DJ Sharlese</a>
+			</div>
+			
+            </div>
+		
+			<div class="EmailDj"><strong>DJ Requests</strong> 
+				<a href="#" class="emaildj_link"><img src="/playlist/Resources/Images/email-dj.gif" alt="Email the DJ a request" /></a>
+			</div>
+		</div>
+
+		<h2 class="debug_hidden">Runtime: 12:18:06.690</h2>
+	</div>
+	<div id="PlaylistNavigation">
+		<table>
+			<tr>
+				<td>
+					<select id="PlaylistMonth" name="PlaylistMonth"><option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option selected="selected" value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+					<select id="PlaylistDay" name="PlaylistDay"><option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option selected="selected">14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option>24</option>
+<option>25</option>
+<option>26</option>
+<option>27</option>
+<option>28</option>
+<option>29</option>
+<option>30</option>
+<option>31</option>
+</select>
+					<select id="PlaylistYear" name="PlaylistYear"><option selected="selected">2012</option>
+<option>2011</option>
+<option>2010</option>
+<option>2009</option>
+<option>2008</option>
+<option>2007</option>
+<option>2006</option>
+<option>2005</option>
+<option>2004</option>
+<option>2003</option>
+<option>2002</option>
+<option>2001</option>
+</select>
+					<select id="PlaylistHour" name="PlaylistHour"><option value="12am">12 AM</option>
+<option value="1am">1 AM</option>
+<option value="2am">2 AM</option>
+<option value="3am">3 AM</option>
+<option value="4am">4 AM</option>
+<option value="5am">5 AM</option>
+<option value="6am">6 AM</option>
+<option value="7am">7 AM</option>
+<option value="8am">8 AM</option>
+<option value="9am">9 AM</option>
+<option value="10am">10 AM</option>
+<option value="11am">11 AM</option>
+<option value="12pm">12 PM</option>
+<option value="1pm">1 PM</option>
+<option value="2pm">2 PM</option>
+<option value="3pm">3 PM</option>
+<option value="4pm">4 PM</option>
+<option value="5pm">5 PM</option>
+<option selected="selected" value="6pm">6 PM</option>
+<option value="7pm">7 PM</option>
+<option value="8pm">8 PM</option>
+<option value="9pm">9 PM</option>
+<option value="10pm">10 PM</option>
+<option value="11pm">11 PM</option>
+</select>
+				
+				</td>
+				<td>
+					<input type="button" id="PlaylistButton" name="PlaylistButton" value=" Go " />
+					<input type="hidden" id="PlaylistDate" name="PlaylistDate" value="null" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="HourNavigation">
+						<div><a href="/playlist/2012/7/14/5pm" id="PreviousHourButton">&lt; Previous</a></div>
+						
+						<div class="LiveHour"><a id="LiveHourButton" href="/playlist/">Go To Now</a></div>
+						
+						<div class="NextHour"><a href="/playlist/2012/7/14/7pm" id="NextHourButton">Next &gt;</a></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br clear="all" />
+
+	<div id="Playlist">
+			<div id="PlaylistItems">
+				
+
+<div id="Play20120715015732000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572673","PlayType":1,"AirDate":"\/Date(1342317452000)\/","UpdatedDate":"\/Date(1342317477863)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Don&apos;t Talk To The Cops!","ReleaseName":"Regular Show","TrackName":"Guess I&apos;m Strange","LabelName":"Self-released","ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581515","Text":"July 22nd at the Capitol Hill Block Party.  Sept 1st at Bumbershoot.  www.donttalktothecopsmusic.com","IsDeleted":false,"CreatedDate":"\/Date(1342317691927)\/","UpdatedDate":"\/Date(1342317691927)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/5732"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					July 22nd at the Capitol Hill Block Party.  Sept 1st at Bumbershoot.  www.donttalktothecopsmusic.com
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Don&#39;t Talk To The Cops!" 
+						title="Search KEXP for Don&#39;t Talk To The Cops!">Don&#39;t Talk To The Cops!</a></div>
+					<div class="TrackName">Guess I&#39;m Strange</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Regular Show</div>
+						<div class="ReleaseAndLabel">Self-released</div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:57 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715015732000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/5732" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715015732000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/5732" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715015732000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/5732"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715015426000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572672","PlayType":1,"AirDate":"\/Date(1342317266000)\/","UpdatedDate":"\/Date(1342317579077)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Beat Connection","ReleaseName":"The Palace Garden","TrackName":"Saola","LabelName":"Classic Ills","ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/41615-g8PVL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581513","Text":"Out on 8\/6.  July 21st Playing at the Capitol Hill Block Party.  beatconnection.co\/Beat_Connection\/Home.html","IsDeleted":false,"CreatedDate":"\/Date(1342317307587)\/","UpdatedDate":"\/Date(1342318045303)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/41615-g8PVL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/5426"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/41615-g8PVL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Out on 8/6.  July 21st Playing at the Capitol Hill Block Party.  beatconnection.co/Beat_Connection/Home.html
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Beat Connection" 
+						title="Search KEXP for Beat Connection">Beat Connection</a></div>
+					<div class="TrackName">Saola</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">The Palace Garden</div>
+						<div class="ReleaseAndLabel">Released by <span class="LabelName">Classic Ills</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:54 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715015426000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/5426" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715015426000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/5426" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715015426000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/5426"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715015052000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572671","PlayType":1,"AirDate":"\/Date(1342317052000)\/","UpdatedDate":"\/Date(1342317082443)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Dana Buoy","ReleaseName":"Summer Bodies","TrackName":"So Lucky","LabelName":"Lefse","ReleaseEventDate":{"Year":2012,"Month":5,"Day":8},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51-Nh3NFyIL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581514","Text":"This track was June 19th KEXP Song of the Day.  Find out more about it at: danabuoy.tumblr.com\/post\/25450042605\/kexp-song-of-the-day-pdx-pop-now-show-announced","IsDeleted":false,"CreatedDate":"\/Date(1342317334170)\/","UpdatedDate":"\/Date(1342317334170)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51-Nh3NFyIL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/5052"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51-Nh3NFyIL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					This track was June 19th KEXP Song of the Day.  Find out more about it at: danabuoy.tumblr.com/post/25450042605/kexp-song-of-the-day-pdx-pop-now-show-announced
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Dana Buoy" 
+						title="Search KEXP for Dana Buoy">Dana Buoy</a></div>
+					<div class="TrackName">So Lucky</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Summer Bodies</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2012</span> by <span class="LabelName">Lefse</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:50 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715015052000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/5052" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715015052000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/5052" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715015052000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/5052"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715014910000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572670","PlayType":4,"AirDate":"\/Date(1342316950000)\/","UpdatedDate":"\/Date(1342316951433)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">6:49 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120715014844000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572669","PlayType":1,"AirDate":"\/Date(1342316924000)\/","UpdatedDate":"\/Date(1342317057030)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":true,"ArtistName":"Generifus","ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581511","Text":"July 20th Live at the Old Fire House in Redmond.  krecs.com\/artists\/generifus","IsDeleted":false,"CreatedDate":"\/Date(1342317057327)\/","UpdatedDate":"\/Date(1342317057327)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/4844"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					July 20th Live at the Old Fire House in Redmond.  krecs.com/artists/generifus
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Generifus" 
+						title="Search KEXP for Generifus">Generifus</a></div>
+					<div class="TrackName"></div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName"></div>
+						
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:48 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715014844000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/4844" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715014844000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/4844" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715014844000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/4844"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715014304000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572668","PlayType":1,"AirDate":"\/Date(1342316584000)\/","UpdatedDate":"\/Date(1342316670067)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Modest Mouse","ReleaseName":"The Lonesome Crowded West","TrackName":"Polar Opposites","LabelName":"Up Records","ReleaseEventDate":{"Year":1997,"Month":11,"Day":18},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/412674B5VKL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581512","Text":"www.modestmousemusic.com","IsDeleted":false,"CreatedDate":"\/Date(1342317110383)\/","UpdatedDate":"\/Date(1342317110383)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/412674B5VKL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/4304"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/412674B5VKL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					www.modestmousemusic.com
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Modest Mouse" 
+						title="Search KEXP for Modest Mouse">Modest Mouse</a></div>
+					<div class="TrackName">Polar Opposites</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">The Lonesome Crowded West</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">1997</span> by <span class="LabelName">Up Records</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:43 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715014304000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/4304" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715014304000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/4304" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715014304000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/4304"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715014044000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572667","PlayType":1,"AirDate":"\/Date(1342316444000)\/","UpdatedDate":"\/Date(1342316480620)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Mean Jeans","ReleaseName":"On Mars","TrackName":"2 Twisted 2 Luv U","LabelName":"Dirtnap","ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/31ckwX%2B3Q4L._SL75_.jpg","DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/31ckwX+3Q4L.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/4044"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/31ckwX+3Q4L.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Mean Jeans" 
+						title="Search KEXP for Mean Jeans">Mean Jeans</a></div>
+					<div class="TrackName">2 Twisted 2 Luv U</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">On Mars</div>
+						<div class="ReleaseAndLabel">Released by <span class="LabelName">Dirtnap</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:40 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715014044000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/4044" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715014044000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/4044" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715014044000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/4044"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715013802000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572666","PlayType":1,"AirDate":"\/Date(1342316282000)\/","UpdatedDate":"\/Date(1342316305837)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":true,"ArtistName":"The Young Evils","ReleaseName":"Foreign Spells","TrackName":"Dead Animals","LabelName":"self-released","ReleaseEventDate":{"Year":2012,"Month":7,"Day":10},"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/3802"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=The Young Evils" 
+						title="Search KEXP for The Young Evils">The Young Evils</a></div>
+					<div class="TrackName">Dead Animals</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Foreign Spells</div>
+						<div class="ReleaseAndLabel">Self-released in <span class="ReleaseEventDate">2012</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:38 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715013802000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/3802" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715013802000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/3802" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715013802000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/3802"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715013604000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572665","PlayType":4,"AirDate":"\/Date(1342316164000)\/","UpdatedDate":"\/Date(1342316165573)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">6:36 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120715013527000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572664","PlayType":1,"AirDate":"\/Date(1342316127000)\/","UpdatedDate":"\/Date(1342316136573)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Unnatural Helpers","ReleaseName":"Cracked Love & Other Drugs","TrackName":"Sunshine \/ Pretty Girls","LabelName":"Hardly Art","ReleaseEventDate":{"Year":2010,"Month":4,"Day":27},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/41su0fqTNNL._SL75_.jpg","DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/41su0fqTNNL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/3527"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/41su0fqTNNL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Unnatural Helpers" 
+						title="Search KEXP for Unnatural Helpers">Unnatural Helpers</a></div>
+					<div class="TrackName">Sunshine / Pretty Girls</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Cracked Love &amp; Other Drugs</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2010</span> by <span class="LabelName">Hardly Art</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:35 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715013527000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/3527" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715013527000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/3527" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715013527000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/3527"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715013123000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572663","PlayType":1,"AirDate":"\/Date(1342315883000)\/","UpdatedDate":"\/Date(1342315893817)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Built to Spill","ReleaseName":"Thereâ€™s Nothing Wrong With Love","TrackName":"Big Dipper","LabelName":"Up Records","ReleaseEventDate":{"Year":1994,"Month":9,"Day":13},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/21ZDG6SMCZL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581510","Text":"Playing an upcoming tour throughout August and September.  No NW shows listed at the moment... www.builttospill.com\/tour","IsDeleted":false,"CreatedDate":"\/Date(1342316043503)\/","UpdatedDate":"\/Date(1342316043503)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/21ZDG6SMCZL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/3123"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/21ZDG6SMCZL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Playing an upcoming tour throughout August and September.  No NW shows listed at the moment... www.builttospill.com/tour
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Built to Spill" 
+						title="Search KEXP for Built to Spill">Built to Spill</a></div>
+					<div class="TrackName">Big Dipper</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">There’s Nothing Wrong With Love</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">1994</span> by <span class="LabelName">Up Records</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:31 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715013123000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/3123" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715013123000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/3123" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715013123000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/3123"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715012551000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572662","PlayType":1,"AirDate":"\/Date(1342315551000)\/","UpdatedDate":"\/Date(1342315561487)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Grand Archives","ReleaseName":"The Grand Archives","TrackName":"Sleepdriving","LabelName":"Sub Pop Records","ReleaseEventDate":{"Year":2008,"Month":2,"Day":19},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51LSsdx0N0L._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581509","Text":"From the debut full-length from this group that contains former members of Carissa&apos;s Wierd and Band of Horses.  grandarchives.com","IsDeleted":false,"CreatedDate":"\/Date(1342315799517)\/","UpdatedDate":"\/Date(1342315799517)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51LSsdx0N0L.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/2551"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51LSsdx0N0L.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					From the debut full-length from this group that contains former members of Carissa&#39;s Wierd and Band of Horses.  grandarchives.com
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Grand Archives" 
+						title="Search KEXP for Grand Archives">Grand Archives</a></div>
+					<div class="TrackName">Sleepdriving</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">The Grand Archives</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2008</span> by <span class="LabelName">Sub Pop Records</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:25 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715012551000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/2551" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715012551000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/2551" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715012551000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/2551"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715012215000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572661","PlayType":1,"AirDate":"\/Date(1342315335000)\/","UpdatedDate":"\/Date(1342315393363)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"M. Ward","ReleaseName":"PDX Pop Now 2012","TrackName":"Watch The Show","LabelName":"PDX Pop Now!","ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581508","Text":"Check out the video Announcement for the PDX Pop Now! 2012 Line-up at: www.pdxpopnow.com\/2012video  - or -  find out more about M Ward here: www.mwardmusic.com","IsDeleted":false,"CreatedDate":"\/Date(1342315505060)\/","UpdatedDate":"\/Date(1342315505060)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/2215"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Check out the video Announcement for the PDX Pop Now! 2012 Line-up at: www.pdxpopnow.com/2012video  - or -  find out more about M Ward here: www.mwardmusic.com
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=M. Ward" 
+						title="Search KEXP for M. Ward">M. Ward</a></div>
+					<div class="TrackName">Watch The Show</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">PDX Pop Now 2012</div>
+						<div class="ReleaseAndLabel">Released by <span class="LabelName">PDX Pop Now!</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:22 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715012215000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/2215" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715012215000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/2215" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715012215000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/2215"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715011835000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572660","PlayType":4,"AirDate":"\/Date(1342315115000)\/","UpdatedDate":"\/Date(1342315116960)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">6:18 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120715011733000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572659","PlayType":1,"AirDate":"\/Date(1342315053000)\/","UpdatedDate":"\/Date(1342315081827)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Black Mountain","ReleaseName":"Wilderness Heart","TrackName":"Rollercoaster","LabelName":"Jagjaguwar","ReleaseEventDate":{"Year":2010,"Month":9,"Day":14},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51t-Klth-WL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581507","Text":"From the 3rd (and most recent) LP by this 5 piece Canadian band.  blackmountainband.com","IsDeleted":false,"CreatedDate":"\/Date(1342315262290)\/","UpdatedDate":"\/Date(1342315262290)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51t-Klth-WL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/1733"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51t-Klth-WL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					From the 3rd (and most recent) LP by this 5 piece Canadian band.  blackmountainband.com
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Black Mountain" 
+						title="Search KEXP for Black Mountain">Black Mountain</a></div>
+					<div class="TrackName">Rollercoaster</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Wilderness Heart</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2010</span> by <span class="LabelName">Jagjaguwar</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:17 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715011733000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/1733" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715011733000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/1733" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715011733000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/1733"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715011231000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572658","PlayType":1,"AirDate":"\/Date(1342314751000)\/","UpdatedDate":"\/Date(1342314766313)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":true,"ArtistName":"Erik Blood","ReleaseName":"Touch Screens","TrackName":"Constance and Casey","LabelName":"self-released","ReleaseEventDate":{"Year":2012,"Month":8,"Day":7},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581506","Text":"Probably not your Mom&apos;s favorite album cover... This is from the album due out August 7th.  www.erikblood.com\/touchscreens.html","IsDeleted":false,"CreatedDate":"\/Date(1342314931300)\/","UpdatedDate":"\/Date(1342314931300)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/1231"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Probably not your Mom&#39;s favorite album cover... This is from the album due out August 7th.  www.erikblood.com/touchscreens.html
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Erik Blood" 
+						title="Search KEXP for Erik Blood">Erik Blood</a></div>
+					<div class="TrackName">Constance and Casey</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Touch Screens</div>
+						<div class="ReleaseAndLabel">Self-released in <span class="ReleaseEventDate">2012</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:12 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715011231000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/1231" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715011231000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/1231" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715011231000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/1231"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715011011000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572657","PlayType":1,"AirDate":"\/Date(1342314611000)\/","UpdatedDate":"\/Date(1342314681137)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":"Helvetia","ReleaseName":"Nothing in Rambling","TrackName":"RyBro","LabelName":"Joyful Noise","ReleaseEventDate":{"Year":null,"Month":null,"Day":null},"ReleaseImageUri":null,"DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581504","Text":"out 9\/11","IsDeleted":false,"CreatedDate":"\/Date(1342314681357)\/","UpdatedDate":"\/Date(1342314681357)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null},{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581505","Text":"This is the first song released from the bands upcoming Sept 11 release \"Nothing in Rambling.\"  Read more at: stereogum.com\/1092481\/helvetia-rybro\/mp3s\/  - or-  http:\/\/www.facebook.com\/pages\/Helvetia\/135471617245","IsDeleted":false,"CreatedDate":"\/Date(1342314800977)\/","UpdatedDate":"\/Date(1342314800977)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/1011"><img class="ReleaseImage" alt="Album cover" 
+				src="/playlist/Resources/Images/Album.png" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					out 9/11
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Helvetia" 
+						title="Search KEXP for Helvetia">Helvetia</a></div>
+					<div class="TrackName">RyBro</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Nothing in Rambling</div>
+						<div class="ReleaseAndLabel">Released by <span class="LabelName">Joyful Noise</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:10 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715011011000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/1011" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715011011000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/1011" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715011011000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/1011"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715010800000" class="AirBreak OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572656","PlayType":4,"AirDate":"\/Date(1342314480000)\/","UpdatedDate":"\/Date(1342314482077)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":false,"ArtistName":null,"ReleaseName":null,"TrackName":null,"LabelName":null,"ReleaseEventDate":null,"ReleaseImageUri":null,"DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":null}'>
+	<div class="Table">
+		<div class="TableRow">				
+			<div class="AirBreakText">...air break...</div>
+			<span class="AirDate">6:08 PM</span>
+		</div>
+	</div>
+</div>
+
+<div id="Play20120715010628000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572655","PlayType":1,"AirDate":"\/Date(1342314388000)\/","UpdatedDate":"\/Date(1342314426963)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"C.O.C.O.","ReleaseName":"C.O.C.O.","TrackName":"Move On","LabelName":null,"ReleaseEventDate":{"Year":2000,"Month":10,"Day":31},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/515TqrMHFgL._SL75_.jpg","DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/515TqrMHFgL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/0628"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/515TqrMHFgL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=C.O.C.O." 
+						title="Search KEXP for C.O.C.O.">C.O.C.O.</a></div>
+					<div class="TrackName">Move On</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">C.O.C.O.</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2000</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:06 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715010628000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/0628" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715010628000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/0628" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715010628000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/0628"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715010344000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572654","PlayType":1,"AirDate":"\/Date(1342314224000)\/","UpdatedDate":"\/Date(1342314412017)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":true,"ArtistName":"Orca Team","ReleaseName":"Restraint","TrackName":"Night Moves","LabelName":"HHBTM","ReleaseEventDate":{"Year":2012,"Month":6,"Day":19},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/41%2BJ5ax9qrL._SL75_.jpg","DefaultComments":[{"__type":"PlayComment:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/comments\/581503","Text":"Playing AUG 2nd at the Funhouse with Wimps, and Sonny & The Sunsets.  More info about the band at: http:\/\/www.facebook.com\/ORCATEAM","IsDeleted":false,"CreatedDate":"\/Date(1342314640390)\/","UpdatedDate":"\/Date(1342314640390)\/","User":{"__type":"User:http:\/\/services.kexp.org\/","Uri":"http:\/\/services.kexp.org\/rest\/users\/38","UserKey":null,"DisplayName":"Sharlese Metcalf","Comments":null,"Opinions":null,"IsDeleted":false,"IsSystem":false},"Play":null}],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/41+J5ax9qrL.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/0344"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/41+J5ax9qrL.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				 <div class="CommentText">
+					<span class="DJComment">DJ Comment: </span>
+					Playing AUG 2nd at the Funhouse with Wimps, and Sonny &amp; The Sunsets.  More info about the band at: http://www.facebook.com/ORCATEAM
+					</div>
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Orca Team" 
+						title="Search KEXP for Orca Team">Orca Team</a></div>
+					<div class="TrackName">Night Moves</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Restraint</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2012</span> by <span class="LabelName">HHBTM</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:03 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715010344000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/0344" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715010344000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/0344" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715010344000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/0344"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715010010000" class="Play EvenPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572653","PlayType":1,"AirDate":"\/Date(1342314010000)\/","UpdatedDate":"\/Date(1342314402580)\/","IsDeleted":false,"IsPurchasable":false,"IsLocal":true,"ArtistName":"Minus the Bear","ReleaseName":"Highly Refined Pirates","TrackName":"Monkey!!! Knife!!! Fight!!!","LabelName":"Suicide Squeeze Records","ReleaseEventDate":{"Year":2002,"Month":11,"Day":19},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/1193Z9KJ11L._SL75_.jpg","DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/1193Z9KJ11L.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/6PM/0010"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/1193Z9KJ11L.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Minus the Bear" 
+						title="Search KEXP for Minus the Bear">Minus the Bear</a></div>
+					<div class="TrackName">Monkey!!! Knife!!! Fight!!!</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Highly Refined Pirates</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2002</span> by <span class="LabelName">Suicide Squeeze Records</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>6:00 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715010010000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/6PM/0010" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715010010000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/6PM/0010" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715010010000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/6PM/0010"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="Play20120715005641000" class="Play OddPlay" data-playlistitem='{"PlayUri":"http:\/\/services.kexp.org\/rest\/plays\/1572652","PlayType":1,"AirDate":"\/Date(1342313801000)\/","UpdatedDate":"\/Date(1342313845230)\/","IsDeleted":false,"IsPurchasable":true,"IsLocal":false,"ArtistName":"Lily Allen","ReleaseName":"Alright, Still","TrackName":"Friday Night","LabelName":"Regal Recordings","ReleaseEventDate":{"Year":2006,"Month":7,"Day":17},"ReleaseImageUri":"http:\/\/ecx.images-amazon.com\/images\/I\/51QE7k9d%2B0L._SL75_.jpg","DefaultComments":[],"TrackPlayCount":0,"TrackFirstAirDate":null,"TrackOpinionTally":0,"PlayCommentCount":0,"LargeExtImage":"http:\/\/ecx.images-amazon.com\/images\/I\/51QE7k9d+0L.jpg"}'>
+	<div class="Table">
+		<div class="TableRow">
+			<div class="Column1">
+				<a href="/playlist/2012/07/14/5PM/5641"><img class="ReleaseImage" alt="Album cover" 
+				src="http://ecx.images-amazon.com/images/I/51QE7k9d+0L.jpg" /></a>
+			</div>
+			<div class="ResourceNames Table">
+				<div class="TableRow">
+				
+					<div class="ArtistName"><a href="/search/search.aspx?q=Lily Allen" 
+						title="Search KEXP for Lily Allen">Lily Allen</a></div>
+					<div class="TrackName">Friday Night</div>
+					<div class="ReleaseMetadata">
+						<div class="ReleaseName">Alright, Still</div>
+						<div class="ReleaseAndLabel">Released in <span class="ReleaseEventDate">2006</span> by <span class="LabelName">Regal Recordings</span></div>
+						<div class="PlayAttributes">
+							<div class="buylink"><img class="IsPurchasable" src="/Resources/Images/Buy.gif" title="Purchase This Track" alt="Buy!"/></div>
+							<div class="IsLocal">Northwest Artist!</div>
+							<div class="IsRequest"><img src="/Resources/Images/User.png" title="Request" alt="Listener Request" /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="AirDate"><span>5:56 PM</span>
+					<a href="#" class="like_menu_link" id="link-Play20120715005641000" 
+					title="Like this track"><img src="/playlist/Resources/Images/like.png" alt="Like Menu" /></a>
+					<a href="/playlist/2012/07/14/5PM/5641" class="more_info" title="More on this track..."><img src="/playlist/Resources/Images/more-info-off.png" alt="More on this track..." /></a>
+				</div>
+		</div>		
+	</div>
+
+	<div id="link-Play20120715005641000-like_menu" class="like_menu">
+		<ul>
+			
+			<li class="fb_like"><fb:like href="http://kexp.org/playlist/2012/07/14/5PM/5641" send="false" width="100" layout="button_count" show_faces="false"></fb:like></li>
+			<li><a class="twitterCount" title="Share on Twitter"href="#"> &nbsp; </a></li>
+			<li><a class="fbCount" href="#" title="Share on Facebook"> &nbsp; </a></li>
+			<li><g:plusone id="Play20120715005641000-gp" size="small" href="http://kexp.org/playlist/2012/07/14/5PM/5641"></g:plusone></li>
+		</ul>
+	</div>
+</div>
+
+			</div>
+	</div>
+	<div id="containerLower" class="lowerNav ">
+		<div id="lowerPlaylistNav" style="width: 280px;">
+			<div><a href="/playlist/2012/7/14/5pm" id="PreviousHourButton">&lt; Previous</a></div>
+			
+			<div class="LiveHour"><a id="A1" href="/playlist/">Go To Now</a></div>
+			
+			<div class="NextHour"><a href="/playlist/2012/7/14/7pm" id="NextHourButton">Next &gt;</a></div>
+		</div>
+	</div> 
+	<div id="debugFeedback"></div>
+
+
+	</div>
+		<!-- Body end -->
+
+	<div id="debug_pane" style="position: absolute; top: 15px; left: 975px; width: 450px; display: none;"></div>
+
+	<br clear="all" />		
+	</div>
+
+	<div id="footer">
+		<!-- Footer start -->
+		<span id="footer_left">
+		<a href="http://kexp.org/about/email.asp?email=dj">DJ Request</a> 
+			| <a href="http://kexp.org/about/privacy.asp">Privacy / Terms</a> 
+			| <a href="http://kexp.org/about/help.asp">Help</a> 
+			| KEXP is licensed to the 
+			<a href="http://www.washington.edu" target="_new">University of Washington</a>
+		</span>
+		<span id="footer_right">
+			Copyright 2012 KEXP All rights reserved
+		</span>
+		<!-- Footer end -->
+	</div>
+</div>
+	</body>
+</html>
