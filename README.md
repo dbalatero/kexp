@@ -1,7 +1,7 @@
 About
 -----
 
-Pulls down basic play stats for 
+Pulls down basic play stats for KEXP 90.3/kexp.org via crawling/scraping.
 
 Setup
 -----
